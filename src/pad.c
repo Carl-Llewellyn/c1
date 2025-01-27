@@ -2,6 +2,7 @@
 #include "globals.h"
 #include "gool.h"
 #include "pbak.h"
+#include <stdio.h>
 
 pad pads[2];
 int pad_count;
@@ -70,7 +71,7 @@ void PadUpdate() {
   pad *pad;
   uint32_t held;
   int i;
-
+printf("asdsa");
   for (i=0;i<pad_count;i++) {
     pad = &pads[i];
     pad->held_prev2 = pad->held_prev;

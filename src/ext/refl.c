@@ -3,11 +3,11 @@
  *
  * See /ext/lib/refl.md for an overview of the type reflection functionality.
  */
- #include "./ext/lib/refl.h"
+ #include "lib/refl.h"
 
- #include "common.h"
- #include "geom.h"
- #include "gool.h"
+ #include "../common.h"
+ #include "../geom.h"
+ #include "../gool.h"
 
 int CountPlusOne(void *data, refl_field *field) {
   int count;

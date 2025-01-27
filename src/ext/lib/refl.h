@@ -2,7 +2,7 @@
 #define _REFL_H_
 
 #include <stdlib.h>
-#include "common.h"
+#include "../../common.h"
 
 #define REFL_FLAGS_INITED  1
 #define REFL_FLAGS_STATIC  2

@@ -4,13 +4,13 @@
  *
  * See section in /doc/files.md for more info.
  */
-#include "./ext/gui.h"
-#include "./ext/lib/refl.h"
-#include "./ext/lib/gui.h"
-#include "./util/tree.h"
+#include "gui.h"
+#include "lib/refl.h"
+#include "lib/gui.h"
+#include "../util/tree.h"
 
-#include "ns.h"
-#include "gool.h"
+#include "../ns.h"
+#include "../gool.h"
 
 extern ns_struct ns;
 extern gool_handle handles[8];

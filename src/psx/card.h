@@ -1,8 +1,8 @@
 #ifndef _CARD_H_
 #define _CARD_H_
 
-#include "common.h"
-#include <LIBAPI.H>
+#include "../common.h"
+#include <libapi.h>
 
 #define CARD_FLAG_PENDING_IO   1
 #define CARD_FLAG_ERROR        2

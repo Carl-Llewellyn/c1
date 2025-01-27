@@ -1,9 +1,9 @@
 #ifndef _F_WGEO_H_
 #define _F_WGEO_H_
 
-#include "common.h"
-#include "ns.h"
-#include "geom.h"
+#include "../common.h"
+#include "../ns.h"
+#include "../geom.h"
 
 typedef texinfo2 wgeo_texinfo;
 

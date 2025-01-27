@@ -1,7 +1,7 @@
 #ifndef _F_IMAG_H_
 #define _F_IMAG_H_
 
-#include "common.h"
+#include "../common.h"
 
 typedef struct {
   uint32_t clut_id;

@@ -1,9 +1,9 @@
 #ifndef _R3000A_H_
 #define _R3000A_H_
 
-#include "common.h"
-#include "geom.h"
-#include "zdat.h"
+#include "../common.h"
+#include "../geom.h"
+#include "../formats/zdat.h"
 
 typedef struct {
   /*  */

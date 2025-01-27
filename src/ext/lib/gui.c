@@ -1,6 +1,6 @@
 #include "gui.h"
 #define CIMGUI_DEFINE_ENUMS_AND_STRUCTS
-#include "cimgui.h"
+#include "cimgui/cimgui.h"
 #include <stdlib.h>
 #include <string.h>
 #include <limits.h>

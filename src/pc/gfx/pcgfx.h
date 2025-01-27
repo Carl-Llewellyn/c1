@@ -1,7 +1,7 @@
 #ifndef _PC_GFX_H_
 #define _PC_GFX_H_
 
-#include "geom.h"
+#include "../../geom.h"
 
 /* gfx primitive types */
 #define PRIM_NEXT(p) (void*)((int)((p)->next) & ~3)

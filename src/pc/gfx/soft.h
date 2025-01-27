@@ -1,15 +1,15 @@
 #ifndef _SOFT_H_
 #define _SOFT_H_
 
-#include "common.h"
-#include "geom.h"
-#include "gool.h"
-#include "formats/svtx.h"
-#include "formats/cvtx.h"
-#include "formats/tgeo.h"
-#include "formats/wgeo.h"
-#include "formats/slst.h"
-#include "formats/zdat.h"
+#include "../../common.h"
+#include "../../geom.h"
+#include "../../gool.h"
+#include "../../formats/svtx.h"
+#include "../../formats/cvtx.h"
+#include "../../formats/tgeo.h"
+#include "../../formats/wgeo.h"
+#include "../../formats/slst.h"
+#include "../../formats/zdat.h"
 
 /* this structure is a combination of values
    some are the equivalent of GTE state/register values used in the psx implementation

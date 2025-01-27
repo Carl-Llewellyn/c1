@@ -1,7 +1,7 @@
 #ifndef _PC_AUDIO_H_
 #define _PC_AUDIO_H_
 
-#include "common.h"
+#include "../../common.h"
 
 extern void SwAudioInit();
 extern void SwAudioKill();

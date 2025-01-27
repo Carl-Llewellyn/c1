@@ -1,9 +1,9 @@
 #ifndef _F_PBAK_H_
 #define _F_PBAK_H_
 
-#include "common.h"
-#include "gfx.h"
-#include "level.h"
+#include "../common.h"
+#include "../gfx.h"
+#include "../level.h"
 
 typedef struct {
   int ticks_elapsed;

@@ -1,8 +1,8 @@
 #ifndef _F_SLST_H_
 #define _F_SLST_H_
 
-#include "common.h"
-#include "ns.h"
+#include "../common.h"
+#include "../ns.h"
 
 typedef struct {
 BITFIELDS_03(

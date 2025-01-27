@@ -1,7 +1,7 @@
 #ifndef _DISGOOL_H_
 #define _DISGOOL_H_
 
-#include "common.h"
+#include "../common.h"
 
 #define _GopA_  ((ins >> 12) & 0xFFF)  // GOOL operand A
 #define _GopB_  ((ins      ) & 0xFFF)  // GOOL operand B

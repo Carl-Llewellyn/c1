@@ -1,7 +1,7 @@
 #ifndef _UTIL_H_
 #define _UTIL_H_
 
-#include "common.h"
+#include "../../common.h"
 
 extern size_t ADPCMToPCM16(uint8_t *adpcm, size_t size, uint8_t *pcm, int *loop);
 

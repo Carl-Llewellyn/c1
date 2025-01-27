@@ -1,5 +1,5 @@
 #include "card.h"
-#include <LIBMCRD.H>
+#include <libmcrd.h>
 
 /* .sdata */
 card_struct *card        =  0; /* 80056564; gp[0x5A] */

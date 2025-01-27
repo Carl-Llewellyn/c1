@@ -1,7 +1,7 @@
 #include "gpu.h"
-#include "globals.h"
-#include "ns.h"
-#include "gfx.h"
+#include "../globals.h"
+#include "../ns.h"
+#include "../gfx.h"
 
 int rcnt_stopped;       /* 8005642C */
 gfx_context_db context; /* 80058400 */

@@ -1,8 +1,8 @@
 #ifndef _F_SVTX_H_
 #define _F_SVTX_H_
 
-#include "common.h"
-#include "ns.h"
+#include "../common.h"
+#include "../ns.h"
 
 typedef struct {
   uint8_t x;

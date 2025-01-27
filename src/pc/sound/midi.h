@@ -1,7 +1,7 @@
 #ifndef _PC_MIDI_H_
 #define _PC_MIDI_H_
 
-#include "common.h"
+#include "../../common.h"
 
 extern void SwMidiInit();
 extern void SwMidiKill();

@@ -1,9 +1,9 @@
 #ifndef _F_TGEO_H_
 #define _F_TGEO_H_
 
-#include "common.h"
-#include "ns.h"
-#include "geom.h"
+#include "../common.h"
+#include "../ns.h"
+#include "../geom.h"
 
 typedef texinfo tgeo_texinfo;
 typedef colinfo tgeo_colinfo;

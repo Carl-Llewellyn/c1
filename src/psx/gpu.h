@@ -1,8 +1,8 @@
 #ifndef _GPU_H_
 #define _GPU_H_
 
-#include "common.h"
-#include <LIBGPU.H>
+#include "../common.h"
+#include <libgpu.h>
 
 typedef struct {
   int idx;

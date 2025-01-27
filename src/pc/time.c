@@ -1,4 +1,4 @@
-#include "common.h"
+#include "../common.h"
 
 int32_t ticks_base = 0;
 

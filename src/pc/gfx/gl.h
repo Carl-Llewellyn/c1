@@ -1,8 +1,8 @@
 #ifndef _GL_H_
 #define _GL_H_
 
-#include "common.h"
-#include "geom.h"
+#include "../../common.h"
+#include "../../geom.h"
 #include "pcgfx.h"
 
 typedef struct {

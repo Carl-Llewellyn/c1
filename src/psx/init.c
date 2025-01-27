@@ -1,13 +1,13 @@
-#include <LIBAPI.H>
-#include <LIBGTE.H>
-#include <LIBGS.H>
+#include <libapi.h>
+#include <libgte.h>
+#include <libgs.h>
 
-#include "ns.h"
+#include "../ns.h"
 #include "pad.h"
-#include "psx/r3000a.h"
-#include "psx/gpu.h"
-#include "psx/card.h"
-#include "psx/cdr.h"
+#include "../psx/r3000a.h"
+#include "gpu.h"
+#include "card.h"
+#include "cdr.h"
 
 /* .sbss */
 long rcnt_event;

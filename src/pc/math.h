@@ -1,7 +1,7 @@
 #ifndef _PC_MATH_H_
 #define _PC_MATH_H_
 
-#include "common.h"
+#include "../common.h"
 
 int16_t msin(uint32_t a);
 int16_t mcos(uint32_t a);

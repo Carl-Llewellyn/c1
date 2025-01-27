@@ -1,12 +1,12 @@
 #ifndef _F_ZDAT_H_
 #define _F_ZDAT_H_
 
-#include "common.h"
-#include "geom.h"
-#include "ns.h"
+#include "../common.h"
+#include "../geom.h"
+#include "../ns.h"
 
-#include "formats/gool.h"
-#include "formats/wgeo.h"
+#include "../formats/gool.h"
+#include "../formats/wgeo.h"
 
 #define ZONE_FLAG_UP_DOWN               0x1
 #define ZONE_FLAG_SOLID_BOTTOM          0x2

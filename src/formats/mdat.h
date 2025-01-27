@@ -1,8 +1,8 @@
 #ifndef _F_MDAT_H_
 #define _F_MDAT_H_
 
-#include "common.h"
-#include "ns.h"
+#include "../common.h"
+#include "../ns.h"
 
 typedef struct { /* location and height (clut_count) of a vertically stacked group of 256x1 cluts */
   uint32_t clut_x;
@@ -23,7 +23,7 @@ typedef struct { /* describes a title card/state, including tiles and cluts for 
   eid_t imags[32];
 } mdat_header;
 
-#include "formats/zdat.h"
+#include "zdat.h"
 typedef zone_entity mdat_entity;
 
 #endif /* _F_MDAT_H_ */

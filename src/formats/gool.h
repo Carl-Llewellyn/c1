@@ -1,9 +1,9 @@
 #ifndef _F_GOOL_H_
 #define _F_GOOL_H_
 
-#include "common.h"
-#include "geom.h"
-#include "ns.h"
+#include "../common.h"
+#include "../geom.h"
+#include "../ns.h"
 
 typedef struct {
   uint32_t type;

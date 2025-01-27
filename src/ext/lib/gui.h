@@ -1,9 +1,9 @@
 #ifndef _GUI_H_
 #define _GUI_H_
 
-#include "common.h"
-#include "geom.h"
-#include "util/tree.h"
+#include "../../common.h"
+#include "../../geom.h"
+#include "../../util/tree.h"
 
 /* hierarchy */
 #define GUI_FLAGS_READONLY     1

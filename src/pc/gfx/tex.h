@@ -1,8 +1,8 @@
 #ifndef _TEX_H_
 #define _TEX_H_
 
-#include "common.h"
-#include "geom.h"
+#include "../../common.h"
+#include "../../geom.h"
 #include "pcgfx.h"
 
 typedef int (*tex_create_callback_t)(dim2, uint8_t*);

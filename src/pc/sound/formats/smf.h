@@ -1,7 +1,7 @@
 #ifndef _SMF_H_
 #define _SMF_H_
 
-#include "common.h"
+#include "../../common.h"
 
 typedef uint8_t uint24_t[3];
 
