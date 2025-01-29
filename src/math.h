@@ -6,7 +6,7 @@
 #include "gool.h"
 
 #ifdef PSX
-#include <LIBGTE.H>
+#include <libgte.h>
 #define sin rsin
 #define cos rcos
 #define atan2 ratan2

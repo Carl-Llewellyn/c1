@@ -6,6 +6,8 @@
 #include "ns.h"
 #include "gool.h"
 #include "formats/zdat.h"
+#include "psx/card.h"
+#include <stdint.h>
 
 /* game state */
 #define GAME_STATE_CUTSCENE 0

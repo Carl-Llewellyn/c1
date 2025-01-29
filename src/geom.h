@@ -1,6 +1,7 @@
 #ifndef _GEOM_H_
 #define _GEOM_H_
 
+#include <stdint.h> // For uint8_t and int32_t
 #include "common.h"
 
 /*
@@ -533,7 +534,7 @@ typedef vec28 quad28_t[4];
 typedef fvec fquad_t[4];
 typedef fvec2 fquad2_t[4];
 
-typedef struct { vec p[4]; } quad;
+typedef struct { vec p[4]; } t_quad;
 typedef struct { vec16 p[4]; } quad16;
 typedef struct { vec8 p[4]; } quad8;
 typedef struct { vec2 p[4]; } quad2;

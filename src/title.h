@@ -3,6 +3,7 @@
 
 #include "common.h"
 #include "ns.h"
+#include <libgpu.h>
 
 typedef struct { /* u,v coordinate indices for a 16x16 color mode 1 texture */
   uint32_t u_idx;

@@ -4,12 +4,12 @@
 #include "../common.h"
 #include <libapi.h>
 
-#define CARD_FLAG_PENDING_IO   1
-#define CARD_FLAG_ERROR        2
+#define CARD_FLAG_PENDING_IO 1
+#define CARD_FLAG_ERROR 2
 #define CARD_FLAG_CHECK_NEEDED 4
-#define CARD_FLAG_CHECKING     8
-#define CARD_FLAG_NEW_DEVICE   0x10
-#define CARD_FLAG_6            0x20
+#define CARD_FLAG_CHECKING 8
+#define CARD_FLAG_NEW_DEVICE 0x10
+#define CARD_FLAG_6 0x20
 
 typedef struct {
   int is_949;
@@ -30,7 +30,7 @@ typedef struct {
   int entry_count;
   int entry_idx;
   card_part parts[15];
-  DIRENTRY entries[16];  /* 0x49C, 0x127 */
+  struct DIRENTRY entries[16]; /* Use struct DIRENTRY here */
 } card_struct;
 
 typedef struct {
@@ -40,7 +40,7 @@ typedef struct {
   uint16_t clut[16];
 } card_header;
 
-typedef uint16_t card_image[8*8];
+typedef uint16_t card_image[8 * 8];
 
 typedef struct {
   uint32_t progress;

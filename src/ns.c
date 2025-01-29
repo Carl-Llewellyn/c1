@@ -1,7 +1,14 @@
+#include <stdio.h>
 #include "ns.h"
 #include "geom.h"
 #include "title.h"
 #include "formats/zdat.h"
+
+
+///uhhh maybe delete these?
+#include <bits/types/__FILE.h>
+#include <bits/types/FILE.h>
+#include <bits/types/struct_FILE.h>
 
 /* .rdata */
 #ifdef CFLAGS_ORIG_IMPL

@@ -12,7 +12,7 @@ extern pbak_header *cur_pbak_header;
 extern pbak_frame *cur_pbak_frame;
 
 #ifdef PSX
-#include <LIBPAD.H>
+#include <libpad.h>
 #include "psx/gpu.h"
 extern gfx_context_db context;
 #else
@@ -71,7 +71,7 @@ void PadUpdate() {
   pad *pad;
   uint32_t held;
   int i;
-printf("asdsa");
+
   for (i=0;i<pad_count;i++) {
     pad = &pads[i];
     pad->held_prev2 = pad->held_prev;

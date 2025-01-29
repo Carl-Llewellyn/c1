@@ -5,8 +5,8 @@
 #include "geom.h"
 #include "gool.h"
 #ifdef PSX
-#include <LIBSPU.H>
-#include <LIBSND.H>
+#include <libspu.h>
+#include <libsnd.h>
 #else
 #include "pc/sound/audio.h"
 #endif

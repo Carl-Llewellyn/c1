@@ -2,10 +2,16 @@
 #define _NS_H_
 
 #include "common.h"
-
+#include <stdint.h> // For uint8_t and int32_t
+#include <stdlib.h>
+ 
 /* eid */
 #define EID_NONE 0x6396347F
 #define EID_NULL EID_NONE
+
+//maybe delete - this is just pulled from refl.h
+typedef struct _refl_field refl_field;
+typedef size_t (*refl_sizefn_t)(void* data, refl_field *field, int idx);
 
 typedef uint32_t eid_t;
 
@@ -35,7 +41,7 @@ typedef uint32_t pgid_t;
 #define PAGE_SIZE         0x10000
 #define PAGE_ENTRIES_MAX  256
 
-#define SECTOR_SIZE       0x800
+#define NS_SECTOR_SIZE       0x800
 
 #define align_to_sectors(offset) \
   (((((uint32_t)(offset)-1)>>11)+1)<<11)

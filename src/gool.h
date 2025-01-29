@@ -7,6 +7,7 @@
 
 #include "formats/gool.h"
 #include "formats/zdat.h"
+#include <stdint.h>
 
 /* events */
 #define GOOL_EVENT_JUMPED_ON       0

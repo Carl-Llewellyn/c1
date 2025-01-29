@@ -1,65 +1,172 @@
+#include "audio.h"
 #include "common.h"
-#include "globals.h"
-#include "ns.h"
-#include "pad.h"
 #include "gfx.h"
-#include "misc.h"
+#include "globals.h"
 #include "gool.h"
 #include "level.h"
+#include "midi.h"
+#include "misc.h"
+#include "ns.h"
+#include "pad.h"
+#include "pbak.h"
 #include "slst.h"
 #include "solid.h"
-#include "pbak.h"
-#include "audio.h"
-#include "midi.h"
 #include "title.h"
 
+
 #ifdef PSX
-#include "psx/init.h"
 #include "psx/gpu.h"
+#include "psx/init.h"
 #include "psx/r3000a.h"
+
 #else
-#include "pc/init.h"
-#include "pc/time.h"
 #include "pc/gfx/gl.h"
 #include "pc/gfx/soft.h" // for ext only
+#include "pc/init.h"
+#include "pc/time.h"
+
 #endif
 
 /* .data */
 const ns_subsystem subsys[21] = {
 #ifdef PSX
-  { .name = "NONE", .init =      GpuSetupPrims, .init2 =                  0, .on_load =          0, .unsued = 0, .kill =            GpuKill },
+    {.name = "NONE",
+     .init = GpuSetupPrims,
+     .init2 = 0,
+     .on_load = 0,
+     .unused = 0,
+     .kill = GpuKill},
 #else
-  { .name = "NONE", .init =       GLSetupPrims, .init2 =                  0, .on_load =          0, .unused = 0, .kill =             GLKill },
+    {.name = "NONE",
+     .init = GLSetupPrims,
+     .init2 = 0,
+     .on_load = 0,
+     .unused = 0,
+     .kill = GLKill},
 #endif
-  { .name = "SVTX", .init =                  0, .init2 =                  0, .on_load =          0, .unused = 0, .kill =                  0 },
-  { .name = "TGEO", .init =                  0, .init2 =                  0, .on_load = TgeoOnLoad, .unused = 0, .kill =                  0 },
-  { .name = "WGEO", .init =                  0, .init2 =                  0, .on_load =          0, .unused = 0, .kill =                  0 },
-  { .name = "SLST", .init =           SlstInit, .init2 =                  0, .on_load =          0, .unused = 0, .kill =           SlstKill },
-  { .name = "TPAG", .init =                  0, .init2 =                  0, .on_load =          0, .unused = 0, .kill =                  0 },
-  { .name = "LDAT", .init =                  0, .init2 =           LdatInit, .on_load =          0, .unused = 0, .kill =                  0 },
-  { .name = "ZDAT", .init =                  0, .init2 =                  0, .on_load = ZdatOnLoad, .unused = 0, .kill =                  0 },
-  { .name = "CPAT", .init =                  0, .init2 =                  0, .on_load =          0, .unused = 0, .kill =                  0 },
-  { .name = "BINF", .init =           BinfInit, .init2 =                  0, .on_load =          0, .unused = 0, .kill =           BinfKill },
-  { .name = "OPAT", .init = GoolInitAllocTable, .init2 =        GoolInitLid, .on_load =          0, .unused = 0, .kill = GoolKillAllocTable },
-  { .name = "GOOL", .init =                  0, .init2 =                  0, .on_load =          0, .unused = 0, .kill =                  0 },
-  { .name = "ADIO", .init =          AudioInit, .init2 =                  0, .on_load =          0, .unused = 0, .kill =          AudioKill },
-  { .name = "MIDI", .init =           MidiInit, .init2 =                  0, .on_load =          0, .unused = 0, .kill =           MidiKill },
-  { .name = "INST", .init =                  0, .init2 =                  0, .on_load =          0, .unused = 0, .kill =                  0 },
-  { .name = "IMAG", .init =                  0, .init2 =                  0, .on_load =          0, .unused = 0, .kill =                  0 },
-  { .name = "LINK", .init =                  0, .init2 =                  0, .on_load =          0, .unused = 0, .kill =                  0 },
-  { .name = "MDAT", .init =          TitleInit, .init2 = TitleLoadNextState, .on_load = MdatOnLoad, .unused = 0, .kill =          TitleKill },
-  { .name = "IPAL", .init =                  0, .init2 =                  0, .on_load =          0, .unused = 0, .kill =                  0 },
-  { .name = "PBAK", .init =           PbakInit, .init2 =                  0, .on_load =          0, .unused = 0, .kill =           PbakKill }
-};
+    {.name = "SVTX",
+     .init = 0,
+     .init2 = 0,
+     .on_load = 0,
+     .unused = 0,
+     .kill = 0},
+    {.name = "TGEO",
+     .init = 0,
+     .init2 = 0,
+     .on_load = TgeoOnLoad,
+     .unused = 0,
+     .kill = 0},
+    {.name = "WGEO",
+     .init = 0,
+     .init2 = 0,
+     .on_load = 0,
+     .unused = 0,
+     .kill = 0},
+    {.name = "SLST",
+     .init = SlstInit,
+     .init2 = 0,
+     .on_load = 0,
+     .unused = 0,
+     .kill = SlstKill},
+    {.name = "TPAG",
+     .init = 0,
+     .init2 = 0,
+     .on_load = 0,
+     .unused = 0,
+     .kill = 0},
+    {.name = "LDAT",
+     .init = 0,
+     .init2 = LdatInit,
+     .on_load = 0,
+     .unused = 0,
+     .kill = 0},
+    {.name = "ZDAT",
+     .init = 0,
+     .init2 = 0,
+     .on_load = ZdatOnLoad,
+     .unused = 0,
+     .kill = 0},
+    {.name = "CPAT",
+     .init = 0,
+     .init2 = 0,
+     .on_load = 0,
+     .unused = 0,
+     .kill = 0},
+    {.name = "BINF",
+     .init = BinfInit,
+     .init2 = 0,
+     .on_load = 0,
+     .unused = 0,
+     .kill = BinfKill},
+    {.name = "OPAT",
+     .init = GoolInitAllocTable,
+     .init2 = GoolInitLid,
+     .on_load = 0,
+     .unused = 0,
+     .kill = GoolKillAllocTable},
+    {.name = "GOOL",
+     .init = 0,
+     .init2 = 0,
+     .on_load = 0,
+     .unused = 0,
+     .kill = 0},
+    {.name = "ADIO",
+     .init = AudioInit,
+     .init2 = 0,
+     .on_load = 0,
+     .unused = 0,
+     .kill = AudioKill},
+    {.name = "MIDI",
+     .init = MidiInit,
+     .init2 = 0,
+     .on_load = 0,
+     .unused = 0,
+     .kill = MidiKill},
+    {.name = "INST",
+     .init = 0,
+     .init2 = 0,
+     .on_load = 0,
+     .unused = 0,
+     .kill = 0},
+    {.name = "IMAG",
+     .init = 0,
+     .init2 = 0,
+     .on_load = 0,
+     .unused = 0,
+     .kill = 0},
+    {.name = "LINK",
+     .init = 0,
+     .init2 = 0,
+     .on_load = 0,
+     .unused = 0,
+     .kill = 0},
+    {.name = "MDAT",
+     .init = TitleInit,
+     .init2 = TitleLoadNextState,
+     .on_load = MdatOnLoad,
+     .unused = 0,
+     .kill = TitleKill},
+    {.name = "IPAL",
+     .init = 0,
+     .init2 = 0,
+     .on_load = 0,
+     .unused = 0,
+     .kill = 0},
+    {.name = "PBAK",
+     .init = PbakInit,
+     .init2 = 0,
+     .on_load = 0,
+     .unused = 0,
+     .kill = PbakKill}};
 /* .sdata */
-int wgeom_disabled = 0;         /* 800563FC; gp[0x0]  */
-int paused = 0;                 /* 80056400; gp[0x1]  */
-int pause_status = 0;           /* 8005640C; gp[0x4]  */
-int use_cd = 1;                 /* 80056410; gp[0x5]  */
-int done = 0;                   /* 80056428; gp[0xB]  */
+int wgeom_disabled = 0; /* 800563FC; gp[0x0]  */
+int paused = 0;         /* 80056400; gp[0x1]  */
+int pause_status = 0;   /* 8005640C; gp[0x4]  */
+int use_cd = 1;         /* 80056410; gp[0x5]  */
+int done = 0;           /* 80056428; gp[0xB]  */
 /* .sbss */
-uint32_t pause_stamp;           /* 800565B8; gp[0x6F] */
-uint32_t pause_draw_stamp;      /* 800565BC; gp[0x70] */
+uint32_t pause_stamp;      /* 800565B8; gp[0x6F] */
+uint32_t pause_draw_stamp; /* 800565BC; gp[0x70] */
 
 extern ns_struct ns;
 extern pad pads[2];
@@ -83,7 +190,7 @@ int draw_objbounds = 0;
 
 #ifdef PSX
 extern gfx_context_db context;
-extern int ticks_elapsed;
+extern uint32_t ticks_elapsed;
 #else
 extern gl_context context;
 #endif
@@ -94,12 +201,18 @@ void CoreLoop(lid_t lid);
 int main() {
 #ifdef PSX
   use_cd = 1;
+  CdInit();
 #else
   use_cd = 0;
-#endif
   init();
+#endif
+  // init();
   CoreLoop(LID_BOOTLEVEL);
+
+#ifndef PSX
   _kill();
+#endif
+
   return 0;
 }
 
@@ -110,20 +223,19 @@ void CoreObjectsCreate() {
   if (cur_lid == LID_TITLE) { /* title level? */
     NSOpen(&ns.ldat->exec_map[4], 0, 1);
     NSOpen(&ns.ldat->exec_map[52], 0, 1);
-  }
-  else if (cur_lid == LID_LEVELEND) { /* level completion screen? */
+  } else if (cur_lid == LID_LEVELEND) { /* level completion screen? */
     NSOpen(&ns.ldat->exec_map[29], 0, 1);
     NSOpen(&ns.ldat->exec_map[30], 0, 1);
     NSOpen(&ns.ldat->exec_map[3], 0, 1);
-  }
-  else if (cur_lid != LID_INTRO && cur_lid != LID_GAMEWIN) { /* not intro or ending? */
+  } else if (cur_lid != LID_INTRO &&
+             cur_lid != LID_GAMEWIN) { /* not intro or ending? */
     life_hud = GoolObjectCreate(&handles[1], 4, 0, 0, 0, 0);
     fruit_hud = GoolObjectCreate(&handles[1], 4, 1, 0, 0, 0);
     pickup_hud = GoolObjectCreate(&handles[1], 4, 5, 0, 0, 0);
     NSOpen(&ns.ldat->exec_map[0], 0, 1);
     NSOpen(&ns.ldat->exec_map[5], 0, 1);
     NSOpen(&ns.ldat->exec_map[29], 0, 1);
-    if (cur_lid != LID_THEGREATHALL) /* not the great hall? */
+    if (cur_lid != LID_THEGREATHALL)        /* not the great hall? */
       NSOpen(&ns.ldat->exec_map[34], 0, 1); /* load boxes code */
     NSOpen(&ns.ldat->exec_map[3], 0, 1);
     NSOpen(&ns.ldat->exec_map[4], 0, 1);
@@ -148,7 +260,9 @@ void CoreLoop(lid_t lid) {
   do {
     lid = ns.ldat->lid;
     is_pause_lid = lid != LID_TITLE && lid != LID_LEVELEND && lid != LID_INTRO;
-    can_pause = (pbak_state == 0) && ((is_pause_lid && title_pause_state != -1) || title_pause_state > 0);
+    can_pause =
+        (pbak_state == 0) &&
+        ((is_pause_lid && title_pause_state != -1) || title_pause_state > 0);
     if ((pads[0].tapped & 0x800) && can_pause) {
       if (paused = 1 - paused) {
         if (!pause_obj) {
@@ -164,17 +278,17 @@ void CoreLoop(lid_t lid) {
 #else
             pause_draw_stamp = context.draw_stamp;
 #endif
-          }
-          else {
+          } else {
             pause_status = 0;
             paused = 0;
             pause_obj = 0;
           }
         }
-      }
-      else if (pause_obj) { /* pause screen object exists? */
+      } else if (pause_obj) { /* pause screen object exists? */
         arg = 0;
-        GoolSendEvent(0, pause_obj, 0xC00, 1, &arg); /* send resume/kill? event to pause screen object */
+        GoolSendEvent(
+            0, pause_obj, 0xC00, 1,
+            &arg); /* send resume/kill? event to pause screen object */
         pause_obj = 0;
         pause_status = -1;
 #ifndef PSX
@@ -187,24 +301,25 @@ void CoreLoop(lid_t lid) {
         context.draw_stamp = pause_draw_stamp;
 #endif
       }
-    }
-    else
+    } else
       pause_status = 0;
-    if (crash && crash_eid != EID_NONE) /* crash exists and there is a pbak entry to play? */
+    if (crash &&
+        crash_eid !=
+            EID_NONE) /* crash exists and there is a pbak entry to play? */
       PbakPlay(&crash_eid);
-    if (next_lid == -1 && lid != LID_TITLE
-      && (game_state == GAME_STATE_GAMEOVER
-       || game_state == GAME_STATE_CONTINUE
-       || game_state == 0x400))
+    if (next_lid == -1 && lid != LID_TITLE &&
+        (game_state == GAME_STATE_GAMEOVER ||
+         game_state == GAME_STATE_CONTINUE || game_state == 0x400))
       next_lid = LID_TITLE;
     if (next_lid != -1) {
       GoolSendToColliders(0, GOOL_EVENT_LEVEL_END, 0, 0, 0);
       if (next_lid == -2) {
         lid = savestate.lid;
-        bonus_return = 1; /* i.e. loading nsf and there is a savestate to load */
-        bonus_return2 = 1; /* LdatInit clears bonus_return so we need a persistent variant */
-      }
-      else {
+        bonus_return =
+            1; /* i.e. loading nsf and there is a savestate to load */
+        bonus_return2 = 1; /* LdatInit clears bonus_return so we need a
+                              persistent variant */
+      } else {
         lid = next_lid;
         bonus_return = 0;
         bonus_return2 = 0;
@@ -235,7 +350,7 @@ void CoreLoop(lid_t lid) {
 #endif
     LevelSpawnObjects();
     if (!paused) {
-      header = (zone_header*)cur_zone->items[0];
+      header = (zone_header *)cur_zone->items[0];
       if (header->display_flags & (ZONE_FLAG_DARK2 | ZONE_FLAG_LIGHTNING))
         ShaderParamsUpdate(0);
       /* if (!globals->paused) { ??? */
@@ -250,11 +365,13 @@ void CoreLoop(lid_t lid) {
 #else
     ot = context.ot;
 #endif
-    header = (zone_header*)cur_zone->items[0];
-    if ((cur_display_flags & GOOL_FLAG_DISPLAY_WORLDS) && header->world_count && !wgeom_disabled) {
+    header = (zone_header *)cur_zone->items[0];
+    if ((cur_display_flags & GOOL_FLAG_DISPLAY_WORLDS) && header->world_count &&
+        !wgeom_disabled) {
       if (header->display_flags & ZONE_FLAG_DARK2)
         GfxTransformWorldsDark2(ot);
-      else if ((header->display_flags & ZONE_FLAG_FOG_LIGHTNING) == ZONE_FLAG_FOG_LIGHTNING)
+      else if ((header->display_flags & ZONE_FLAG_FOG_LIGHTNING) ==
+               ZONE_FLAG_FOG_LIGHTNING)
         GfxTransformWorldsDark(ot);
       else if (header->display_flags & ZONE_FLAG_FOG)
         GfxTransformWorldsFog(ot);
@@ -278,7 +395,8 @@ void CoreLoop(lid_t lid) {
     if (pads[0].tapped & 1)
       draw_objbounds = !draw_objbounds;
     if (draw_objbounds)
-      SwTransformObjectBounds(object_bounds, object_bound_count, ot, GLGetPrimsTail());
+      SwTransformObjectBounds(object_bounds, object_bound_count, ot,
+                              GLGetPrimsTail());
 #endif
 #ifndef PSX
     GLClear();

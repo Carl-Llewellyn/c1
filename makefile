@@ -32,9 +32,12 @@ SRCS = \
 	src/psx/r3000a.c \
 	src/psx/r3000a.s
 
-
 # C compiler flags (-g -O3 -Wall)
 CPPFLAGS += -Ithird_party/psyq-iwyu/include
+CPPFLAGS += -Isrc/common/
+CPPFLAGS += -DPSX
+
+
 LDFLAGS += -Lthird_party/psyq/lib
 LDFLAGS += -Wl,--start-group
 LDFLAGS += -lapi

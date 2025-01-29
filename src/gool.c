@@ -10,7 +10,7 @@
 #include "ext/disgool.h"
 #endif
 #ifdef PSX
-#include <LIBGTE.h>
+#include <libgte.h>
 #include "psx/card.h"
 #else
 #include "pc/gfx/soft.h"

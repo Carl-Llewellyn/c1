@@ -7,7 +7,7 @@
 #include "formats/inst.h"
 
 #ifdef PSX
-#include <LIBSND.H>
+#include <libsnd.h>
 #else
 #include "pc/sound/midi.h"
 #endif
